@@ -5,22 +5,22 @@ export const plansMap = [
       description: "Get started with SpeakEasy!",
       price: "10",
       items: ["3 Blog Posts", "3 Transcription"],
-      paymentLink: "https://buy.stripe.com/test_aEU9D35X65fH0MMeUW",
-      priceId:
+      paymentLink: "https://buy.stripe.com/test_9AQ00V8eMeVW6sw3cc",
+      priceId: 
         process.env.NODE_ENV === "development"
-          ? "price_1PtLVqBPnsISnc82CW4au1uq"
+          ? "price_1PzP2uSHfC7XrxxPYnoATD9N"
           : "",
     },
     {
       id: "pro",
       name: "Pro",
       description: "All Blog Posts, let’s go!",
-      price: "19.99",
+      price: "19",
       items: ["Unlimited Blog Posts", "Unlimited Transcriptions"],
-      paymentLink: "https://buy.stripe.com/test_cN26qRclufUl9jibIL",
+      paymentLink: "https://buy.stripe.com/test_eVafZTamUdRS9EI3cd",
       priceId:
         process.env.NODE_ENV === "development"
-          ? "price_1PtLVqBPnsISnc82bspCVu5e"
+          ? "price_1PzP2uSHfC7XrxxPHkWbUvCs"
           : "",
     },
   ];
