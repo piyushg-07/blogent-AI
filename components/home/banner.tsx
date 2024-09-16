@@ -22,7 +22,7 @@ export default function Banner() {
         className="mt-6 text-xl rounded-full px-12 py-8 lg:mt-20 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white font-bold shadow-lg hover:no-underline"
       >
         <Link href="/#pricing" className="flex gap-2 items-center">
-          <span className="relative">Get SpeakEasy </span>
+          <span className="relative">Get Blogent-AI </span>
           <ArrowRight className="animate-pulse" />
         </Link>
       </Button>

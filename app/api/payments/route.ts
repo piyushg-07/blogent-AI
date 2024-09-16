@@ -1,7 +1,8 @@
-// import {
-//     handleCheckoutSessionCompleted,
-//     handleSubscriptionDeleted,
-//   } from "@/lib/payment-helpers";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+    handleCheckoutSessionCompleted,
+    handleSubscriptionDeleted,
+  } from "@/lib/payment-helpers";
   import { NextRequest, NextResponse } from "next/server";
   import Stripe from "stripe";
   
@@ -32,16 +33,17 @@
             }
           );
           console.log({ session });
+        //   console.log("piyush");
   
           //connect to the db create or update user
-        //   await handleCheckoutSessionCompleted({ session, stripe });
+          await handleCheckoutSessionCompleted({ session, stripe });
           break;
         }
         case "customer.subscription.deleted": {
           // connect to db
           const subscriptionId = event.data.object.id;
   
-        //   await handleSubscriptionDeleted({ subscriptionId, stripe });
+          await handleSubscriptionDeleted({ subscriptionId, stripe });
           break;
         }
         default:
