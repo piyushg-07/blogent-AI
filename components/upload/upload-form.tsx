@@ -7,6 +7,10 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useUploadThing } from "@/utils/uploadthing";
+import {
+  generateBlogPostAction,
+  transcribeUploadedFile,
+} from "@/actions/upload-actions";
 // import { useToast } from "@/hooks/use-toast";
 
 const schema = z.object({
@@ -59,8 +63,7 @@ export default function UploadForm() {
 
     if (file) {
       const resp: any = await startUpload([file]);
-      console.log({ resp });
-
+      console.log("data", { resp });
       if (!resp) {
         toast({
           title: "Something went wrong",
@@ -74,7 +77,35 @@ export default function UploadForm() {
           "Hang tight! Our digital wizards are sprinkling magic dust on your file! ✨",
       });
 
-      
+      const result = await transcribeUploadedFile(resp);
+      console.log("🚀 ~ handleTranscribe ~ resp:", result);
+
+      const { data = null, message = null } = result || {};
+
+      if (!result || (!data && !message)) {
+        toast({
+          title: "An unexpected error occurred",
+          description:
+            "An error occurred during transcription. Please try again.",
+        });
+      }
+      if (data) {
+        toast({
+          title: "🤖 Generating AI blog post...",
+          description: "Please wait while we generate your blog post.",
+        });
+
+        await generateBlogPostAction({
+          transcriptions: data.transcriptions,
+          userId: data.userId,
+        });
+
+        toast({
+          title: "🎉 Woohoo! Your AI blog is created! 🎊",
+          description:
+            "Time to put on your editor hat, Click the post and edit it!",
+        });
+      }
     }
   };
   return (
