@@ -44,6 +44,8 @@ export default function UploadForm() {
 
   const handleTranscribe = async (formData: FormData) => {
     const file = formData.get("file") as File;
+    console.log("🚀 ~ handleTranscribe ~ file:", file);
+
 
     const validatedFields = schema.safeParse({ file });
 
